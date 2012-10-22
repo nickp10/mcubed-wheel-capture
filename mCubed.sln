@@ -3,10 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mCubed", "mCubed\mCubed.csproj", "{4ECD4974-820C-45B2-9607-6DD44490DC54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mCubed.UnitTests", "mCubed.UnitTests\mCubed.UnitTests.csproj", "{B456FD58-C491-499D-BD83-560FDF82F710}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A42B4DF-6C80-4C98-BB0A-E8A7A886FA2F}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		mCubed.vsmdi = mCubed.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
 		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = mCubed.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +39,16 @@ Global
 		{4ECD4974-820C-45B2-9607-6DD44490DC54}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4ECD4974-820C-45B2-9607-6DD44490DC54}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4ECD4974-820C-45B2-9607-6DD44490DC54}.Release|x86.ActiveCfg = Release|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B456FD58-C491-499D-BD83-560FDF82F710}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
