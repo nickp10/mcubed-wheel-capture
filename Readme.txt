@@ -1,7 +1,7 @@
 To create a new release:
   1. Ensure these steps are up to date.
   2. Ensure all copyright dates are up to date.
-     - AssemblyInfo.cs in all the projects (mCubed, mCubed.Core, mCubed.Grabber, mCubed.Grabber.Core, and mCubed.UnitTests).
+     - AssemblyInfo.cs in all the projects (mCubed, mCubed.Core, mCubed.Converter, mCubed.Converter.Core, mCubed.Grabber, mCubed.Grabber.Core, and mCubed.UnitTests).
   3. In mCubedSecondary.xaml.cs, ensure the Credits region is up to date.
   4. In mCubedSecondary.xaml, ensure the About section is up to date.
   5. Run all unit tests through Visual Studio to make sure they work.
