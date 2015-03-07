@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C4D5AD0-DE15-4ED1-8966-09E43AB1F5C1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mCubed.WheelCapture</RootNamespace>
+    <AssemblyName>mCubed.WheelCapture</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Category.cs" />
+    <Compile Include="CategorySerializer.cs" />
+    <Compile Include="Puzzle.cs" />
+    <Compile Include="PuzzleAnalyzer.cs" />
+    <Compile Include="PuzzleCalculator.cs" />
+    <Compile Include="WOFCaptureViewModel.cs" />
+    <Compile Include="Word.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Letters\A.bmp" />
+    <Resource Include="Letters\B.bmp" />
+    <Resource Include="Letters\C.bmp" />
+    <Resource Include="Letters\D.bmp" />
+    <Resource Include="Letters\E.bmp" />
+    <Resource Include="Letters\F.bmp" />
+    <Resource Include="Letters\G.bmp" />
+    <Resource Include="Letters\H.bmp" />
+    <Resource Include="Letters\I.bmp" />
+    <Resource Include="Letters\J.bmp" />
+    <Resource Include="Letters\K.bmp" />
+    <Resource Include="Letters\L.bmp" />
+    <Resource Include="Letters\M.bmp" />
+    <Resource Include="Letters\N.bmp" />
+    <Resource Include="Letters\O.bmp" />
+    <Resource Include="Letters\P.bmp" />
+    <Resource Include="Letters\Q.bmp" />
+    <Resource Include="Letters\R.bmp" />
+    <Resource Include="Letters\S.bmp" />
+    <Resource Include="Letters\T.bmp" />
+    <Resource Include="Letters\U.bmp" />
+    <Resource Include="Letters\V.bmp" />
+    <Resource Include="Letters\W.bmp" />
+    <Resource Include="Letters\X.bmp" />
+    <Resource Include="Letters\Y.bmp" />
+    <Resource Include="Letters\Z.bmp" />
+    <Resource Include="Letters\Ampersand.bmp" />
+    <Resource Include="Letters\Apostrophe.bmp" />
+    <Resource Include="Letters\Blank.bmp" />
+    <Resource Include="Letters\BlankHighlighted.bmp" />
+    <Resource Include="Letters\Exclamation.bmp" />
+    <Resource Include="Letters\Hyphen.bmp" />
+    <Resource Include="Letters\Period.bmp" />
+    <Resource Include="Letters\Question.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

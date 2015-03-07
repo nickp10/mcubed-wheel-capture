@@ -1,0 +1,152 @@
+﻿<Window x:Class="mCubed.WheelCapture.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="mCubed: Wheel Of Fortune Capture"
+		Height="500"
+		Width="700">
+	<TabControl>
+		<TabItem Header="Current Puzzle">
+			<ScrollViewer HorizontalScrollBarVisibility="Auto"
+						  VerticalScrollBarVisibility="Auto">
+				<Grid Grid.IsSharedSizeScope="True"
+					  Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.Row="0"
+							   FontSize="24"
+							   FontStretch="Expanded"
+							   HorizontalAlignment="Center"
+							   Text="{Binding CurrentPuzzle.CurrentPuzzle}"
+							   TextWrapping="Wrap" />
+					<Grid Grid.Row="2"
+						  Background="#222222"
+						  TextElement.FontSize="18"
+						  TextElement.FontWeight="Bold"
+						  TextElement.Foreground="White">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="25" />
+							<ColumnDefinition Width="Auto"
+											  SharedSizeGroup="CategoryColumn" />
+							<ColumnDefinition Width="25" />
+							<ColumnDefinition Width="Auto"
+											  SharedSizeGroup="SolveLettersColumn" />
+							<ColumnDefinition Width="10" />
+						</Grid.ColumnDefinitions>
+						<TextBlock Grid.Column="1"
+								   Text="Puzzle" />
+						<TextBlock Grid.Column="3"
+								   Text="Category" />
+						<TextBlock Grid.Column="5"
+								   Text="Solve Letters" />
+					</Grid>
+					<ItemsControl Grid.Row="3"
+								  AlternationCount="2"
+								  ItemsSource="{Binding CurrentPuzzle.Solutions}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Border BorderBrush="Black"
+										BorderThickness="1,0,1,1"
+										Padding="10"
+										TextElement.FontSize="18"
+										x:Name="SolutionBorder">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition />
+											<ColumnDefinition Width="25" />
+											<ColumnDefinition Width="Auto"
+															  SharedSizeGroup="CategoryColumn" />
+											<ColumnDefinition Width="25" />
+											<ColumnDefinition Width="Auto"
+															  SharedSizeGroup="SolveLettersColumn" />
+										</Grid.ColumnDefinitions>
+										<TextBlock Grid.Column="0"
+												   Text="{Binding Value}" />
+										<TextBlock Grid.Column="2"
+												   Text="{Binding Category.Name}" />
+										<TextBlock Grid.Column="4"
+												   FontWeight="Bold"
+												   Text="{Binding SolveLetters}" />
+									</Grid>
+								</Border>
+								<DataTemplate.Triggers>
+									<Trigger Property="ItemsControl.AlternationIndex"
+											 Value="1">
+										<Setter Property="Background"
+												TargetName="SolutionBorder"
+												Value="#CCC" />
+									</Trigger>
+								</DataTemplate.Triggers>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</Grid>
+			</ScrollViewer>
+		</TabItem>
+		<TabItem Header="Previous Puzzles">
+			<ScrollViewer HorizontalScrollBarVisibility="Auto"
+						  VerticalScrollBarVisibility="Auto">
+				<Grid>
+					<ItemsControl ItemsSource="{Binding PreviousPuzzles}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding CurrentPuzzle}" />
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</Grid>
+			</ScrollViewer>
+		</TabItem>
+		<TabItem Header="Analyzer">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<GroupBox Grid.Column="0"
+						  Margin="10"
+						  Padding="10"
+						  Header="Character Counts">
+					<ScrollViewer HorizontalScrollBarVisibility="Auto"
+								  VerticalScrollBarVisibility="Auto">
+						<ItemsControl ItemsSource="{Binding Analyzer.CharacterCounts}"
+									  Grid.IsSharedSizeScope="True">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto"
+															  SharedSizeGroup="LetterColumn" />
+											<ColumnDefinition Width="10" />
+											<ColumnDefinition />
+										</Grid.ColumnDefinitions>
+										<TextBlock Grid.Column="0"
+												   Text="{Binding Key}"
+												   FontWeight="Bold" />
+										<TextBlock Grid.Column="2">
+									<Run>(</Run><TextBlock Text="{Binding Value}" /><Run>)</Run>
+								</TextBlock>
+									</Grid>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</ScrollViewer>
+				</GroupBox>
+				<GroupBox Grid.Column="1"
+						  Margin="10"
+						  Padding="10"
+						  Header="Duplicate Puzzles">
+					<ScrollViewer HorizontalScrollBarVisibility="Auto"
+								  VerticalScrollBarVisibility="Auto">
+						<ItemsControl ItemsSource="{Binding Analyzer.DuplicatePuzzles}" />
+					</ScrollViewer>
+				</GroupBox>
+			</Grid>
+		</TabItem>
+	</TabControl>
+</Window>
