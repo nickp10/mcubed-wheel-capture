@@ -12,7 +12,7 @@ namespace mCubed.WheelCapture
 		private const int COLOR_THRESHOLD = 25;
 		private Point? _lastBoardCorner;
 		private static readonly int[] _boardXOffsets = new[] { 119, 153, 186, 220, 253, 287, 320, 354, 387, 420, 454, 488, 521, 554 };
-		private static readonly int[] _boardYOffsets = new[] { 116, 160, 204, 247 };
+		private static readonly int[] _boardYOffsets = new[] { 116, 160, 204, 248 };
 		private static readonly IDictionary<string, Bitmap> _letterBitmaps = new Dictionary<string, Bitmap>();
 		private static readonly IEnumerable<KeyValuePair<string, char>> _letters = new[]
 		{
