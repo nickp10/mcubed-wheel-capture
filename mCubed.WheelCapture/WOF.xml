@@ -1207,7 +1207,6 @@
     <Word>WINDOW SEATS</Word>
     <Word>HURRY UP AND WAIT</Word>
     <Word>SMARTY-PANTS</Word>
-    <Word>RIPE AVOCODOS</Word>
     <Word>CLASSIFIED ADS</Word>
     <Word>CHAI TEA LATTE</Word>
     <Word>MICROWAVE POPCORN</Word>
@@ -2353,7 +2352,6 @@
     <Word>ICING A CAKE</Word>
     <Word>KNEES &amp; ELBOWS</Word>
     <Word>OIL MAGNATE</Word>
-    <Word>ROPE AVOCODOS</Word>
     <Word>WILD WEST SHOW</Word>
     <Word>ACADEMIC EXCELLENCE</Word>
     <Word>SPEED LIMIT ONE PER CUSTOMER</Word>
@@ -2558,7 +2556,6 @@
     <Word>OUTDOOR CAFE</Word>
     <Word>HOME-COOKED MEAL</Word>
     <Word>CHIPOTLE CHICKEN WRAP</Word>
-    <Word>PSYCHEDELIC</Word>
     <Word>LONG CURLY HAIR</Word>
     <Word>FLOOR PLAN</Word>
     <Word>COURTSIDE</Word>
@@ -2596,7 +2593,7 @@
     <Word>BICYCLE CHAIN REACTION</Word>
     <Word>SURVIVAL OF THE FITTEST</Word>
     <Word>LEGENDARY FUNNYMAN JERRY LEWIS</Word>
-    <Word>TINY TOM CRATCHIT</Word>
+    <Word>TINY TIM CRATCHIT</Word>
     <Word>SCOTCH TAPE &amp; MASKING TAPE</Word>
     <Word>POLITICAL CARTOONIST</Word>
     <Word>TRIVIAL PURSUIT OF HAPPINESS</Word>
@@ -2620,7 +2617,6 @@
     <Word>CHICKEN &amp; CHEESE ENCHILADA</Word>
     <Word>INDIVIDUAL RETIREMENT ACCOUNT</Word>
     <Word>HORIZON</Word>
-    <Word>FANTASY FOOTBALL LEAGUE</Word>
     <Word>SEASON ENDING CLIFFHANGER</Word>
     <Word>CHINESE RESTAURANT</Word>
     <Word>GRAND BALLROOM</Word>
@@ -2682,7 +2678,6 @@
     <Word>COUNTING SHEEP</Word>
     <Word>PATHOLOGICAL LIAR</Word>
     <Word>OUTRIGGER</Word>
-    <Word>FOOD PROCESSOR</Word>
     <Word>RED-TAILED HAWK</Word>
     <Word>THOMAS EDISON</Word>
     <Word>FALAFELS &amp; TAHINI SAUCE</Word>
@@ -2750,7 +2745,6 @@
     <Word>SOUTH OF THE BORDER</Word>
     <Word>PURVEYOR</Word>
     <Word>SPIRITED CONVERSATION</Word>
-    <Word>CITRUS FRUIT SALAD</Word>
     <Word>JOSHUA TREE NATIONAL PARK</Word>
     <Word>FOOT THE BILL OF RIGHTS</Word>
     <Word>PUBLIC PARKING</Word>
@@ -2886,7 +2880,6 @@
     <Word>COUNTING CALORIES</Word>
     <Word>TRAFFIC COP</Word>
     <Word>HASTE MAKES WASTE</Word>
-    <Word>LOBSTER CLAW HAMMER</Word>
     <Word>FLEXING MY MUSCLES</Word>
     <Word>BENJAMIN BRATT</Word>
     <Word>LAKE PLACID NEW YORK</Word>
@@ -2925,7 +2918,6 @@
     <Word>LEMON DROP ANCHOR</Word>
     <Word>SIERRA NEVADA MOUNTAINS</Word>
     <Word>CLEAR BLUE SKY</Word>
-    <Word>FAITH &amp; LAURYN HILL</Word>
     <Word>FEED THE KITTY</Word>
     <Word>DUVET AND SHAM SET</Word>
     <Word>DEDICATING A STATUE</Word>
@@ -2976,7 +2968,6 @@
     <Word>QUICK RECOVERY</Word>
     <Word>STYLISH WARDROBE</Word>
     <Word>SCHOOL CAFETERIA</Word>
-    <Word>CUTTING THE CAKE</Word>
     <Word>SHOW ME THE MONEY</Word>
     <Word>CHIEF FINANCIAL OFFICER</Word>
     <Word>FRESH PEACHES</Word>
@@ -3022,8 +3013,6 @@
     <Word>BING CHERRIES</Word>
     <Word>HERRING SALAD</Word>
     <Word>FORBIDDEN PLANET</Word>
-    <Word>DIAPER BAG OF TRICKS</Word>
-    <Word>LEMON MERINGUE PIE</Word>
     <Word>ORANGE MARMALADE</Word>
     <Word>WELCOME &amp; PLACE MAT</Word>
     <Word>IT WAS NICE TO MEET YOU</Word>
@@ -3044,7 +3033,6 @@
     <Word>CRYSTAL CLEAR</Word>
     <Word>AMBULANCE DRIVER</Word>
     <Word>OPENING CEREMONY</Word>
-    <Word>FOOTBALL FANS</Word>
     <Word>WHEEL AND DEAL</Word>
     <Word>ANNUAL COUNTY FAIR</Word>
     <Word>CREAM OF TOMATO SOUP</Word>
@@ -3075,7 +3063,6 @@
     <Word>LUCY AND LINUS</Word>
     <Word>SUPER BOWL HALFTIME SHOW</Word>
     <Word>ANNUAL SALES CONVENTION</Word>
-    <Word>POSTCARDS FROM THE EDGE</Word>
     <Word>SEATS ON THE FIFTY YARD LINE</Word>
     <Word>FRAMED FAMILY PORTRAIT</Word>
     <Word>CHEF WOLFGANG PUCK</Word>
@@ -3094,7 +3081,6 @@
     <Word>IT HAPPENED ONE NIGHT</Word>
     <Word>CUSTOMER SERVICE REPRESANTATIVE</Word>
     <Word>HOW THE OTHER HALF LIVES</Word>
-    <Word>JOHANNESBURG SOUTH AFRICA</Word>
     <Word>LENTIL SOUP WITH SPICY SAUSAGE</Word>
     <Word>PENNSYLVANIA DUTCH</Word>
     <Word>FAN THE FLAMES</Word>
@@ -3102,5 +3088,105 @@
     <Word>LAUGHING GAS</Word>
     <Word>ZERO TOLERANCE</Word>
     <Word>WALKING MY DOG</Word>
+    <Word>LEAD SINGER</Word>
+    <Word>VACATION PACKAGE</Word>
+    <Word>JACKSON MISSISSIPPI</Word>
+    <Word>PAYING CUSTOMERS</Word>
+    <Word>SCOOBY-DOO WHERE ARE YOU!</Word>
+    <Word>BEWITCHED</Word>
+    <Word>FENDER BENDER</Word>
+    <Word>AQUAGIRL</Word>
+    <Word>ACTOR &amp; COMEDIAN BEN STILLER</Word>
+    <Word>MADAGASCAR</Word>
+    <Word>SAMMY SOSA</Word>
+    <Word>DIRECT DEPOSIT</Word>
+    <Word>REHEARSAL DINNER</Word>
+    <Word>AS THE CROW FLIES</Word>
+    <Word>DIRECT IMPORTS</Word>
+    <Word>SHOPPING CART</Word>
+    <Word>PAYCHECK STUB</Word>
+    <Word>BEAN SPROUT SALAD</Word>
+    <Word>BREAKFAST CEREALS</Word>
+    <Word>PACIFIC STANDARD TIME ZONE</Word>
+    <Word>WISE FOLKS</Word>
+    <Word>HEAD CHEERLEADER</Word>
+    <Word>MIDDLE NAME</Word>
+    <Word>OLD-FASHIONED SING-ALONG</Word>
+    <Word>PEP TALK</Word>
+    <Word>OPENING DAY CEREMONIES</Word>
+    <Word>PILLOW FIGHT</Word>
+    <Word>NEAT FREEK</Word>
+    <Word>MAMA'S BOY</Word>
+    <Word>BOY SCOUT LEADER</Word>
+    <Word>LEATHER GLOVES</Word>
+    <Word>A GAME OF SCRIMMAGE</Word>
+    <Word>IT'S A CINCH!</Word>
+    <Word>OVERSIZED COFFEE MUG</Word>
+    <Word>ROD SERLING'S NIGHT GALLERY</Word>
+    <Word>SOLOMON ISLANDS</Word>
+    <Word>CUPID THE GOD OF LOVE</Word>
+    <Word>RUNNING UP THE STAIRS</Word>
+    <Word>NANTUCKET ISLAND</Word>
+    <Word>NATIONWIDE SURVEY</Word>
+    <Word>INDIAN BURIAL GROUND</Word>
+    <Word>MUSTARD PLASTER</Word>
+    <Word>INDUSTRIAL REVOLUTION</Word>
+    <Word>GUIDED TOUR</Word>
+    <Word>TESTS AND POP QUIZZES</Word>
+    <Word>LIKE A FISH OUT OF WATER</Word>
+    <Word>PREMIUM MOVIE CHANNELS</Word>
+    <Word>DRIVING DIRECTIONS</Word>
+    <Word>CARTOONIST</Word>
+    <Word>PETER PAUL &amp; MARY</Word>
+    <Word>A SHARP PENCIL</Word>
+    <Word>CHICKEN JUMBALAYA</Word>
+    <Word>NO PARKING</Word>
+    <Word>BRANDING IRON</Word>
+    <Word>ACADEMIC PURSIUTS</Word>
+    <Word>WEARING TWO HATS</Word>
+    <Word>POPPED WILD RICE</Word>
+    <Word>ACTOR ERIC BANA</Word>
+    <Word>SARAN WRAP</Word>
+    <Word>CONSTRUCTION SITE</Word>
+    <Word>GOING GREEN</Word>
+    <Word>URBANITES</Word>
+    <Word>UKULELE</Word>
+    <Word>WARM APPLE TURNOVER</Word>
+    <Word>EASTERN SEABOARD</Word>
+    <Word>PLAY THE FOOL</Word>
+    <Word>KEYNOTE SPEAKER</Word>
+    <Word>CHERRY POPSICLE</Word>
+    <Word>PRIVATE TERRACE</Word>
+    <Word>BREADED CHICKEN CUTLETS</Word>
+    <Word>CRAWFISH BISQUE</Word>
+    <Word>THE RAT PATROL</Word>
+    <Word>BABY KANGAROO</Word>
+    <Word>SAY YOU'RE SORRY</Word>
+    <Word>HENCHMEN</Word>
+    <Word>STEAK KNIVES</Word>
+    <Word>UNMENTIONABLES</Word>
+    <Word>FOAM SLEEP MASK</Word>
+    <Word>LADIES FIRST</Word>
+    <Word>UNION MEMBERS</Word>
+    <Word>THE SEVEN YEAR ITCH</Word>
+    <Word>MIND OVER MATTER</Word>
+    <Word>DECAF INSTANT COFFEE</Word>
+    <Word>ACTRESS ISABELLA ROSSELLINI</Word>
+    <Word>PROTECTED FORESTS</Word>
+    <Word>MYTHS LEGENDS &amp; FOLKLORE</Word>
+    <Word>SMILING CHILDREN</Word>
+    <Word>CHAIN OF COMMAND</Word>
+    <Word>INTERNAL REVENUE SERVICE</Word>
+    <Word>MOTOR SCOOTER</Word>
+    <Word>RIPE AVOCADOS</Word>
+    <Word>PLAIN AS DAY</Word>
+    <Word>A NICE GESTURE</Word>
+    <Word>SAILING ACROSS THE ATLANTIC OCEAN</Word>
+    <Word>POINT-BLANK RANGE</Word>
+    <Word>WORLD TRAVELER</Word>
+    <Word>TOM CRUISE SHIP</Word>
+    <Word>LUNCH HOUR</Word>
+    <Word>ALLEGHANY RIVER</Word>
+    <Word>BATHTUB</Word>
   </Category>
 </Categories>
