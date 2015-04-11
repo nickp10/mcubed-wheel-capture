@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace mCubed.WheelCapture
 {
@@ -9,13 +8,6 @@ namespace mCubed.WheelCapture
 		{
 			DataContext = new WOFCaptureViewModel();
 			InitializeComponent();
-		}
-
-		protected override void OnClosing(CancelEventArgs e)
-		{
-			base.OnClosing(e);
-
-			((WOFCaptureViewModel)DataContext).SavePuzzles();
 		}
 	}
 }

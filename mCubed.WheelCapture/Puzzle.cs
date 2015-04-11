@@ -10,24 +10,29 @@ namespace mCubed.WheelCapture
 	{
 		#region Data Members
 
-		private readonly ObservableCollection<Category> _categories;
 		private string _category = "Unknown";
 		private string _currentPuzzle;
 		private bool _isCompleted;
 		private string _originalPuzzle;
 		private IEnumerable<Word> _solutions;
+		private readonly ObservableCollection<Word> _words;
 
 		#endregion
 
 		#region Constructors
 
-		public Puzzle(string originalPuzzle, ObservableCollection<Category> categories)
+		public Puzzle(string originalPuzzle, ObservableCollection<Word> words)
 		{
-			_categories = categories;
-			Solutions = categories.SelectMany(c => c.Words);
+			Solutions = _words = words;
 			OriginalPuzzle = originalPuzzle;
 			CurrentPuzzle = originalPuzzle;
 		}
+
+		#endregion
+
+		#region Events
+
+		public event Action<Word> AddWord;
 
 		#endregion
 
@@ -124,33 +129,25 @@ namespace mCubed.WheelCapture
 			var solution = Solutions.FirstOrDefault(s => s.Value == CurrentPuzzle);
 			if (solution != null)
 			{
-				Category = solution.Category.Name;
+				Category = solution.Category;
 			}
 			UpdateCategories();
 		}
 
 		private void UpdateCategories()
 		{
-			if (IsCompleted)
+			if (IsCompleted && !_words.Any(w => string.Equals(w.Category, Category, StringComparison.OrdinalIgnoreCase) && string.Equals(w.Value, CurrentPuzzle, StringComparison.OrdinalIgnoreCase)))
 			{
-				foreach (var category in _categories.ToArray())
-				{
-					if (string.Equals(category.Name, Category, StringComparison.OrdinalIgnoreCase))
-					{
-						if (!category.Words.Any(w => w.Value == CurrentPuzzle))
-						{
-							category.Words.Add(new Word(category, CurrentPuzzle));
-						}
-					}
-					else
-					{
-						category.Words.RemoveAll(w => w.Value == CurrentPuzzle);
-					}
-					if (category.Words.Count == 0)
-					{
-						_categories.Remove(category);
-					}
-				}
+				OnAddWord(new Word(Category, CurrentPuzzle));
+			}
+		}
+
+		private void OnAddWord(Word word)
+		{
+			var handler = AddWord;
+			if (handler != null)
+			{
+				handler(word);
 			}
 		}
 

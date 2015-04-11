@@ -6,7 +6,7 @@ namespace mCubed.WheelCapture
 {
 	public class Word
 	{
-		public Word(Category category, string word)
+		public Word(string category, string word)
 		{
 			Category = category;
 			Value = word;
@@ -23,7 +23,7 @@ namespace mCubed.WheelCapture
 			return Regex.IsMatch(puzzle, regex);
 		}
 
-		public Category Category { get; private set; }
+		public string Category { get; private set; }
 		public string Value { get; private set; }
 
 		public string SolveLetters

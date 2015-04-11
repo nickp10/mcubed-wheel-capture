@@ -5,13 +5,13 @@ namespace mCubed.WheelCapture
 {
 	public class PuzzleAnalyzer
 	{
-		private readonly IEnumerable<Category> _categories;
 		private IEnumerable<KeyValuePair<char, int>> _characterCounts;
 		private IEnumerable<string> _duplicatePuzzles;
+		private readonly IEnumerable<Word> _words;
 
-		public PuzzleAnalyzer(IEnumerable<Category> categories)
+		public PuzzleAnalyzer(IEnumerable<Word> words)
 		{
-			_categories = categories;
+			_words = words;
 		}
 
 		public IEnumerable<KeyValuePair<char, int>> CharacterCounts
@@ -20,8 +20,7 @@ namespace mCubed.WheelCapture
 			{
 				if (_characterCounts == null)
 				{
-					_characterCounts = _categories.
-						SelectMany(c => c.Words).
+					_characterCounts = _words.
 						SelectMany(w => w.Value).
 						GroupBy(c => c).
 						Select(c => new KeyValuePair<char, int>(c.Key, c.Count())).
@@ -38,8 +37,7 @@ namespace mCubed.WheelCapture
 			{
 				if (_duplicatePuzzles == null)
 				{
-					_duplicatePuzzles = _categories.
-						SelectMany(c => c.Words).
+					_duplicatePuzzles = _words.
 						GroupBy(w => w.Value).
 						Select(w => new { Count = w.Count(), Word = w.Key }).
 						Where(w => w.Count > 1).

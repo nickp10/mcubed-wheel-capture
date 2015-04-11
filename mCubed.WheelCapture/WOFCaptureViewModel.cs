@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using mCubed.Services.Core;
 
 namespace mCubed.WheelCapture
 {
@@ -14,10 +15,10 @@ namespace mCubed.WheelCapture
 
 		private readonly PuzzleAnalyzer _analyzer;
 		private readonly PuzzleCalculator _calculator;
-		private readonly ObservableCollection<Category> _categories;
-		private readonly CategorySerializer _serializer;
+		private readonly Action<Word> _puzzleAddWordHandler;
+		private readonly WheelWordService _service;
+		private readonly ObservableCollection<Word> _words;
 		private Puzzle _currentPuzzle;
-		private readonly ObservableCollection<Puzzle> _previousPuzzles = new ObservableCollection<Puzzle>();
 
 		#endregion
 
@@ -26,9 +27,10 @@ namespace mCubed.WheelCapture
 		public WOFCaptureViewModel()
 		{
 			_calculator = new PuzzleCalculator();
-			_serializer = new CategorySerializer();
-			_categories = new ObservableCollection<Category>(_serializer.ReadCategories());
-			_analyzer = new PuzzleAnalyzer(_categories);
+			_service = new WheelWordService();
+			_words = new ObservableCollection<Word>(_service.WordList.Select(w => new Word(w.Category, w.Word)));
+			_analyzer = new PuzzleAnalyzer(_words);
+			_puzzleAddWordHandler = new Action<Word>(OnAddWord);
 			CalculatePuzzle();
 		}
 
@@ -41,11 +43,6 @@ namespace mCubed.WheelCapture
 			get { return _analyzer; }
 		}
 
-		public ObservableCollection<Category> Categories
-		{
-			get { return _categories; }
-		}
-
 		public Puzzle CurrentPuzzle
 		{
 			get { return _currentPuzzle; }
@@ -53,16 +50,17 @@ namespace mCubed.WheelCapture
 			{
 				if (_currentPuzzle != value)
 				{
+					var oldPuzzle = _currentPuzzle;
 					_currentPuzzle = value;
 					OnPropertyChanged("CurrentPuzzle");
-					OnCurrentPuzzleChanged();
+					OnCurrentPuzzleChanged(oldPuzzle, _currentPuzzle);
 				}
 			}
 		}
 
-		public ObservableCollection<Puzzle> PreviousPuzzles
+		public ObservableCollection<Word> Words
 		{
-			get { return _previousPuzzles; }
+			get { return _words; }
 		}
 
 		#endregion
@@ -99,7 +97,7 @@ namespace mCubed.WheelCapture
 				{
 					if (CurrentPuzzle == null)
 					{
-						CurrentPuzzle = new Puzzle(puzzle, Categories);
+						CurrentPuzzle = new Puzzle(puzzle, Words);
 					}
 					else
 					{
@@ -108,14 +106,7 @@ namespace mCubed.WheelCapture
 							if (CurrentPuzzle.CurrentPuzzle != puzzle)
 							{
 								// It's a new puzzle.
-								System.Windows.Application.Current.Dispatcher.Invoke(new Action(() =>
-								{
-									if (!PreviousPuzzles.Contains(CurrentPuzzle))
-									{
-										PreviousPuzzles.Add(CurrentPuzzle);
-									}
-								}));
-								CurrentPuzzle = new Puzzle(puzzle, Categories);
+								CurrentPuzzle = new Puzzle(puzzle, Words);
 							}
 							else
 							{
@@ -139,30 +130,21 @@ namespace mCubed.WheelCapture
 			}
 		}
 
-		private void OnCurrentPuzzleChanged()
+		private void OnCurrentPuzzleChanged(Puzzle oldPuzzle, Puzzle newPuzzle)
 		{
-			PropertyChangedEventHandler handler = null;
-			var puzzle = CurrentPuzzle;
-			if (puzzle != null)
+			if (oldPuzzle != null)
 			{
-				handler = (s, e) =>
-				{
-					if (e.PropertyName == "IsCompleted" && puzzle.IsCompleted)
-					{
-						System.Windows.Application.Current.Dispatcher.Invoke(new Action(() =>
-						{
-							PreviousPuzzles.Add(puzzle);
-						}));
-						puzzle.PropertyChanged -= handler;
-					}
-				};
-				puzzle.PropertyChanged += handler;
+				oldPuzzle.AddWord -= _puzzleAddWordHandler;
+			}
+			if (newPuzzle != null)
+			{
+				newPuzzle.AddWord += _puzzleAddWordHandler;
 			}
 		}
 
-		public void SavePuzzles()
+		private void OnAddWord(Word word)
 		{
-			_serializer.WriteCategories(Categories);
+			_service.AddWord(word.Value, word.Category);
 		}
 
 		#endregion

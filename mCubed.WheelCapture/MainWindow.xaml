@@ -68,7 +68,7 @@
 										<TextBlock Grid.Column="0"
 												   Text="{Binding Value}" />
 										<TextBlock Grid.Column="2"
-												   Text="{Binding Category.Name}" />
+												   Text="{Binding Category}" />
 										<TextBlock Grid.Column="4"
 												   FontWeight="Bold"
 												   Text="{Binding SolveLetters}" />
@@ -88,24 +88,9 @@
 				</Grid>
 			</ScrollViewer>
 		</TabItem>
-		<TabItem Header="Previous Puzzles">
-			<ScrollViewer HorizontalScrollBarVisibility="Auto"
-						  VerticalScrollBarVisibility="Auto">
-				<Grid>
-					<ItemsControl ItemsSource="{Binding PreviousPuzzles}">
-						<ItemsControl.ItemTemplate>
-							<DataTemplate>
-								<TextBlock Text="{Binding CurrentPuzzle}" />
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-					</ItemsControl>
-				</Grid>
-			</ScrollViewer>
-		</TabItem>
 		<TabItem Header="Analyzer">
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<GroupBox Grid.Column="0"
@@ -135,15 +120,6 @@
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
 						</ItemsControl>
-					</ScrollViewer>
-				</GroupBox>
-				<GroupBox Grid.Column="1"
-						  Margin="10"
-						  Padding="10"
-						  Header="Duplicate Puzzles">
-					<ScrollViewer HorizontalScrollBarVisibility="Auto"
-								  VerticalScrollBarVisibility="Auto">
-						<ItemsControl ItemsSource="{Binding Analyzer.DuplicatePuzzles}" />
 					</ScrollViewer>
 				</GroupBox>
 			</Grid>
