@@ -14,7 +14,7 @@ To setup a project:
   13. Enter the "mCubed3Key" password.
   14. Go to the Publish tab.
   15. Enter the "Publishing Folder Location" of: ..\..\..\Webapps\tomcat\apps\<ASSEMBLY-NAME>\
-  16. Enter the "Insallation Folder URL" of: http://67.177.29.96/Apps/<ASSEMBLY-NAME>/
+  16. Enter the "Insallation Folder URL" of: http://mcubed.ddns.net/Apps/<ASSEMBLY-NAME>/
   17. Click "Updates...".
   18. Check "The application should check for updates".
   19. Click OK.
