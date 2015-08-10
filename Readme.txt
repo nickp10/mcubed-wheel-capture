@@ -33,13 +33,11 @@ To setup a project:
   29. Click Yes to close the file in the editor and Yes to save the changes.
 
 To create a new release:
-  1. Ensure all copyright dates are up to date.
-     - AssemblyInfo.cs in all the projects (mCubed, mCubed.Core, mCubed.Converter, mCubed.Converter.Core, mCubed.Grabber, mCubed.Grabber.Core, and mCubed.UnitTests).
-  2. In mCubedSecondary.xaml.cs, ensure the Credits region is up to date.
-  3. In mCubedSecondary.xaml, ensure the About section is up to date.
-  4. Run all unit tests through Visual Studio to make sure they work.
-  5. Commit all changes.
-  6. Set the build mode to Release.
-  7. Right click the project and choose Publish.
-  8. Click Finish on the wizard to publish the build.
-  9. In the Webapps directory, run the corresponding SyncToDev.bat and SyncToProd.bat files.
+  1. In mCubedSecondary.xaml.cs, ensure the Credits region is up to date.
+  2. In mCubedSecondary.xaml, ensure the About section is up to date.
+  3. Run all unit tests through Visual Studio to make sure they work.
+  4. Commit all changes.
+  5. Set the build mode to Release.
+  6. Right click the project and choose Publish.
+  7. Click Finish on the wizard to publish the build.
+  8. In the Webapps directory, run the corresponding SyncToDev.bat and SyncToProd.bat files.
