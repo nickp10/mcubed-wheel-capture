@@ -40,4 +40,4 @@ To create a new release:
   5. Set the build mode to Release.
   6. Right click the project and choose Publish.
   7. Click Finish on the wizard to publish the build.
-  8. In the Webapps directory, run the corresponding SyncToDev.bat and SyncToProd.bat files.
+  8. In the Webapps directory, run SyncToPi.bat.
