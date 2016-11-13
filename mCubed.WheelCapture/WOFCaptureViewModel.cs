@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Threading;
-using System.Windows.Forms;
 using mCubed.Services.Core;
 
 namespace mCubed.WheelCapture
 {
-	public class WOFCaptureViewModel : INotifyPropertyChanged
+	public class WOFCaptureViewModel : IHandleWOFEvent, INotifyPropertyChanged
 	{
 		#region Data Members
 
 		private readonly PuzzleAnalyzer _analyzer;
-		private readonly PuzzleCalculator _calculator;
 		private readonly Action<Word> _puzzleAddWordHandler;
 		private readonly WheelWordService _service;
 		private readonly ObservableCollection<Word> _words;
 		private Puzzle _currentPuzzle;
+		private readonly WebSocketMessageParser _parser;
 
 		#endregion
 
@@ -26,12 +23,11 @@ namespace mCubed.WheelCapture
 
 		public WOFCaptureViewModel()
 		{
-			_calculator = new PuzzleCalculator();
 			_service = new WheelWordService();
 			_words = new ObservableCollection<Word>(_service.WordList.Select(w => new Word(w.Category, w.Word)));
 			_analyzer = new PuzzleAnalyzer(_words);
 			_puzzleAddWordHandler = new Action<Word>(OnAddWord);
-			CalculatePuzzle();
+			_parser = new WebSocketMessageParser(this);
 		}
 
 		#endregion
@@ -66,28 +62,6 @@ namespace mCubed.WheelCapture
 		#endregion
 
 		#region Methods
-
-		private void CalculatePuzzle()
-		{
-			ThreadPool.QueueUserWorkItem(q =>
-			{
-				while (true)
-				{
-					using (Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height))
-					{
-						using (Graphics graphics = Graphics.FromImage(bitmap))
-						{
-							graphics.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, bitmap.Size, CopyPixelOperation.SourceCopy);
-							var puzzle = _calculator.GetPuzzle(bitmap);
-							ThreadPool.QueueUserWorkItem(q2 =>
-							{
-								OnPuzzleChanged(puzzle);
-							});
-						}
-					}
-				}
-			});
-		}
 
 		private void OnPuzzleChanged(string puzzle)
 		{
@@ -145,6 +119,42 @@ namespace mCubed.WheelCapture
 		private void OnAddWord(Word word)
 		{
 			_service.AddWord(word.Value, word.Category);
+		}
+
+		#endregion
+
+		#region IHandleWOFEvent Members
+
+		public void PuzzleChanged(string puzzle)
+		{
+			OnPuzzleChanged(puzzle);
+		}
+
+		public void CategoryChanged(string category)
+		{
+			Console.WriteLine("New Category Is: " + category);
+		}
+
+		public void LetterGuessed(string letter)
+		{
+			Console.WriteLine("Letter Guessed: " + letter);
+		}
+
+		public void WheelSpun(int wedge)
+		{
+			if (wedge == -1)
+			{
+				Console.WriteLine("Lose a turn");
+			}
+			else
+			{
+				Console.WriteLine("Wheel Spun: " + wedge);
+			}
+		}
+
+		public void PuzzleFinished()
+		{
+			Console.WriteLine("Puzzle Finished");
 		}
 
 		#endregion
