@@ -78,6 +78,16 @@ namespace mCubed.WheelCapture.Model
 
 		#region Methods
 
+		public void LetterGuessed(string letter)
+		{
+			var puzzleLetter = Letters.FirstOrDefault(l => l.Display == letter);
+			if (puzzleLetter != null)
+			{
+				puzzleLetter.IsUsed = true;
+				OnCurrentPuzzleChanged();
+			}
+		}
+
 		private void OnCurrentPuzzleChanged()
 		{
 			var puzzle = CurrentPuzzle;

@@ -115,11 +115,7 @@ namespace mCubed.WheelCapture.ViewModel
 					{
 						CurrentPuzzle = new Puzzle(Words);
 					}
-					var puzzleLetter = CurrentPuzzle.Letters.FirstOrDefault(l => l.Display == letter);
-					if (puzzleLetter != null)
-					{
-						puzzleLetter.IsUsed = true;
-					}
+					CurrentPuzzle.LetterGuessed(letter);
 				}
 			}
 		}
