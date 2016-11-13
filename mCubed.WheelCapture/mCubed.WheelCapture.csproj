@@ -111,53 +111,16 @@
     </Compile>
     <Compile Include="Capture\Capturer.cs" />
     <Compile Include="Capture\CertificateManager.cs" />
-    <Compile Include="IHandleWOFEvent.cs" />
+    <Compile Include="Model\IHandleWOFEvent.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Puzzle.cs" />
-    <Compile Include="PuzzleAnalyzer.cs" />
-    <Compile Include="PuzzleCalculator.cs" />
-    <Compile Include="WebSocketMessageParser.cs" />
-    <Compile Include="WOFCaptureViewModel.cs" />
-    <Compile Include="Word.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Letters\A.bmp" />
-    <Resource Include="Letters\B.bmp" />
-    <Resource Include="Letters\C.bmp" />
-    <Resource Include="Letters\D.bmp" />
-    <Resource Include="Letters\E.bmp" />
-    <Resource Include="Letters\F.bmp" />
-    <Resource Include="Letters\G.bmp" />
-    <Resource Include="Letters\H.bmp" />
-    <Resource Include="Letters\I.bmp" />
-    <Resource Include="Letters\J.bmp" />
-    <Resource Include="Letters\K.bmp" />
-    <Resource Include="Letters\L.bmp" />
-    <Resource Include="Letters\M.bmp" />
-    <Resource Include="Letters\N.bmp" />
-    <Resource Include="Letters\O.bmp" />
-    <Resource Include="Letters\P.bmp" />
-    <Resource Include="Letters\Q.bmp" />
-    <Resource Include="Letters\R.bmp" />
-    <Resource Include="Letters\S.bmp" />
-    <Resource Include="Letters\T.bmp" />
-    <Resource Include="Letters\U.bmp" />
-    <Resource Include="Letters\V.bmp" />
-    <Resource Include="Letters\W.bmp" />
-    <Resource Include="Letters\X.bmp" />
-    <Resource Include="Letters\Y.bmp" />
-    <Resource Include="Letters\Z.bmp" />
-    <Resource Include="Letters\Ampersand.bmp" />
-    <Resource Include="Letters\Apostrophe.bmp" />
-    <Resource Include="Letters\Blank.bmp" />
-    <Resource Include="Letters\BlankHighlighted.bmp" />
-    <Resource Include="Letters\Exclamation.bmp" />
-    <Resource Include="Letters\Hyphen.bmp" />
-    <Resource Include="Letters\Period.bmp" />
-    <Resource Include="Letters\Question.bmp" />
+    <Compile Include="Model\Puzzle.cs" />
+    <Compile Include="ViewModel\PuzzleAnalyzer.cs" />
+    <Compile Include="ViewModel\WebSocketMessageParser.cs" />
+    <Compile Include="ViewModel\WOFCaptureViewModel.cs" />
+    <Compile Include="Model\Word.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mCubed.WheelCapture.pfx" />

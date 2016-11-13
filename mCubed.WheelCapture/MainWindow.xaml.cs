@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using mCubed.WheelCapture.ViewModel;
 
 namespace mCubed.WheelCapture
 {

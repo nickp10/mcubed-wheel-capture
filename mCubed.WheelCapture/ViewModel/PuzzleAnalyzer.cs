@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using mCubed.WheelCapture.Model;
 
-namespace mCubed.WheelCapture
+namespace mCubed.WheelCapture.ViewModel
 {
 	public class PuzzleAnalyzer
 	{

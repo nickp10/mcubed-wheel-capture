@@ -1,5 +1,5 @@
 ﻿
-namespace mCubed.WheelCapture
+namespace mCubed.WheelCapture.Model
 {
 	public interface IHandleWOFEvent
 	{

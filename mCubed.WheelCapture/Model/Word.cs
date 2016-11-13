@@ -1,27 +1,21 @@
 ﻿using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
-namespace mCubed.WheelCapture
+namespace mCubed.WheelCapture.Model
 {
 	public class Word
 	{
+		#region Constructors
+
 		public Word(string category, string word)
 		{
 			Category = category;
 			Value = word;
 		}
 
-		public bool MatchesPuzzle(string format)
-		{
-			return MatchesPuzzle(format, Value);
-		}
+		#endregion
 
-		public static bool MatchesPuzzle(string format, string puzzle)
-		{
-			var regex = "^" + Regex.Escape(format).Replace("_", "[A-Z_]") + "$";
-			return Regex.IsMatch(puzzle, regex);
-		}
+		#region Properties
 
 		public string Category { get; private set; }
 		public string Value { get; private set; }
@@ -43,5 +37,7 @@ namespace mCubed.WheelCapture
 				return builder.ToString();
 			}
 		}
+
+		#endregion
 	}
 }

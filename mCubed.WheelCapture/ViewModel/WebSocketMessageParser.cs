@@ -3,10 +3,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Fiddler;
 using mCubed.WheelCapture.Capture;
+using mCubed.WheelCapture.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace mCubed.WheelCapture
+namespace mCubed.WheelCapture.ViewModel
 {
 	public class WebSocketMessageParser
 	{

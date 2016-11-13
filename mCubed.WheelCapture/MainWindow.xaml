@@ -16,12 +16,22 @@
 						<RowDefinition Height="Auto" />
 						<RowDefinition />
 					</Grid.RowDefinitions>
-					<TextBlock Grid.Row="0"
+					<Grid Grid.Row="0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<TextBlock Grid.Column="0"
+								   FontSize="24"
+								   Foreground="Green"
+								   Text="{Binding CurrentWedge}" />
+						<TextBlock Grid.Column="1"
 							   FontSize="24"
 							   FontStretch="Expanded"
 							   HorizontalAlignment="Center"
 							   Text="{Binding CurrentPuzzle.CurrentPuzzle}"
 							   TextWrapping="Wrap" />
+					</Grid>
 					<Grid Grid.Row="2"
 						  Background="#222222"
 						  TextElement.FontSize="18"
@@ -47,7 +57,7 @@
 					</Grid>
 					<ItemsControl Grid.Row="3"
 								  AlternationCount="2"
-								  ItemsSource="{Binding CurrentPuzzle.Solutions}">
+								  ItemsSource="{Binding CurrentPuzzle.PotentialSolutions}">
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
 								<Border BorderBrush="Black"
