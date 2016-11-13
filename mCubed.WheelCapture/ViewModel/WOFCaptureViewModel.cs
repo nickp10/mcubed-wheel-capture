@@ -52,7 +52,7 @@ namespace mCubed.WheelCapture.ViewModel
 			}
 		}
 
-		private string _currentWedge;
+		private string _currentWedge = "$0";
 		public string CurrentWedge
 		{
 			get { return _currentWedge; }
@@ -115,7 +115,11 @@ namespace mCubed.WheelCapture.ViewModel
 					{
 						CurrentPuzzle = new Puzzle(Words);
 					}
-					// TODO: ADD GUESSED LETTER
+					var puzzleLetter = CurrentPuzzle.Letters.FirstOrDefault(l => l.Display == letter);
+					if (puzzleLetter != null)
+					{
+						puzzleLetter.IsUsed = true;
+					}
 				}
 			}
 		}
@@ -141,7 +145,7 @@ namespace mCubed.WheelCapture.ViewModel
 						}));
 					}
 					CurrentPuzzle = null;
-					CurrentWedge = null;
+					CurrentWedge = "$0";
 				}
 			}
 		}

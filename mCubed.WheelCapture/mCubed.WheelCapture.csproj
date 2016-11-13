@@ -116,6 +116,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Letter.cs" />
     <Compile Include="Model\Puzzle.cs" />
     <Compile Include="ViewModel\PuzzleAnalyzer.cs" />
     <Compile Include="ViewModel\WebSocketMessageParser.cs" />

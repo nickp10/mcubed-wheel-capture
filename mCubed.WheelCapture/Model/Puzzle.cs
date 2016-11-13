@@ -18,6 +18,7 @@ namespace mCubed.WheelCapture.Model
 		public Puzzle(IEnumerable<Word> allSolutions)
 		{
 			_allSolutions = allSolutions;
+			_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Select(l => new Letter { Display = l.ToString() }).ToArray();
 		}
 
 		#endregion
@@ -51,6 +52,12 @@ namespace mCubed.WheelCapture.Model
 					OnCurrentPuzzleChanged();
 				}
 			}
+		}
+
+		private readonly IEnumerable<Letter> _letters;
+		public IEnumerable<Letter> Letters
+		{
+			get { return _letters; }
 		}
 
 		private IEnumerable<Word> _potentialSolutions;
@@ -92,7 +99,9 @@ namespace mCubed.WheelCapture.Model
 
 		private Regex BuildFormatRegex(string puzzle)
 		{
-			return new Regex("^" + Regex.Escape(puzzle).Replace("_", "[A-Z_]") + "$");
+			var availableLetters = Letters.Where(l => !l.IsUsed).Select(l => l.Display).Aggregate((s1, s2) => s1 += s2);
+			var availableRegex = string.Format("[{0}_]", availableLetters);
+			return new Regex("^" + Regex.Escape(puzzle).Replace("_", availableRegex) + "$");
 		}
 
 		#endregion

@@ -17,20 +17,113 @@
 						<RowDefinition />
 					</Grid.RowDefinitions>
 					<Grid Grid.Row="0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="40"/>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="40" />
+						</Grid.RowDefinitions>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
 							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
-						<TextBlock Grid.Column="0"
+						<Border Grid.RowSpan="3"
+								Grid.Column="0"
+								Background="#DDDDDD"
+								Padding="5">
+							<TextBlock FontSize="24"
+									   Foreground="Green"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Text="{Binding CurrentWedge}" />
+						</Border>
+						<Border Grid.RowSpan="3"
+								Grid.Column="2"
+								Background="#DDDDDD"
+								Padding="5">
+							<TextBlock FontSize="24"
+									   Foreground="Green"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Text="{Binding CurrentWedge}" />
+						</Border>
+						<Border Grid.Row="0"
+								Grid.Column="1"
+								Background="#DDDDDD"
+								Padding="5">
+							<ItemsControl ItemsSource="{Binding CurrentPuzzle.Letters}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel IsItemsHost="True"
+												   HorizontalAlignment="Center"
+												   VerticalAlignment="Center" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<TextBlock FontSize="16"
+												   Text="{Binding Display}"
+												   VerticalAlignment="Center"
+												   x:Name="DisplayTextBlock">
+											<TextBlock.Foreground>
+												<SolidColorBrush Color="Black"
+																 x:Name="DisplayColorBrush" />
+											</TextBlock.Foreground>
+										</TextBlock>
+										<DataTemplate.Triggers>
+											<DataTrigger Binding="{Binding IsUsed}"
+														 Value="True">
+												<DataTrigger.EnterActions>
+													<BeginStoryboard>
+														<Storyboard>
+															<DoubleAnimation From="16"
+																			 To="32"
+																			 Duration="0:0:0.250"
+																			 Storyboard.TargetName="DisplayTextBlock"
+																			 Storyboard.TargetProperty="FontSize" />
+															<ColorAnimation From="Black"
+																			To="Green"
+																			Duration="0:0:0.250"
+																			Storyboard.TargetName="DisplayColorBrush"
+																			Storyboard.TargetProperty="Color" />
+															<DoubleAnimation From="32"
+																			 To="12"
+																			 BeginTime="0:0:2"
+																			 Duration="0:0:0.500"
+																			 Storyboard.TargetName="DisplayTextBlock"
+																			 Storyboard.TargetProperty="FontSize" />
+															<DoubleAnimation From="1"
+																			 To="0.75"
+																			 BeginTime="0:0:2"
+																			 Duration="0:0:0.500"
+																			 Storyboard.TargetName="DisplayTextBlock"
+																			 Storyboard.TargetProperty="Opacity" />
+														</Storyboard>
+													</BeginStoryboard>
+												</DataTrigger.EnterActions>
+											</DataTrigger>
+										</DataTemplate.Triggers>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</Border>
+						<Border Grid.Row="2"
+								Grid.Column="1"
+								Background="#DDDDDD"
+								Padding="5">
+							<TextBlock FontSize="16"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Text="{Binding CurrentPuzzle.Category}" />
+						</Border>
+						<TextBlock Grid.Row="1"
+								   Grid.Column="1"
 								   FontSize="24"
-								   Foreground="Green"
-								   Text="{Binding CurrentWedge}" />
-						<TextBlock Grid.Column="1"
-							   FontSize="24"
-							   FontStretch="Expanded"
-							   HorizontalAlignment="Center"
-							   Text="{Binding CurrentPuzzle.CurrentPuzzle}"
-							   TextWrapping="Wrap" />
+								   FontStretch="Expanded"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Text="{Binding CurrentPuzzle.CurrentPuzzle}"
+								   TextWrapping="Wrap" />
 					</Grid>
 					<Grid Grid.Row="2"
 						  Background="#222222"
