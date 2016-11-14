@@ -9,15 +9,16 @@ namespace mCubed.WheelCapture.Model
 	{
 		#region Data Members
 
-		private readonly IEnumerable<Word> _allSolutions;
+		private readonly Queue<string> _guessedLettersQueue = new Queue<string>();
+		private IEnumerable<Word> _persistedPotentialSolutions;
 
 		#endregion
 
 		#region Constructors
 
-		public Puzzle(IEnumerable<Word> allSolutions)
+		public Puzzle(IEnumerable<Word> solutions)
 		{
-			_allSolutions = allSolutions;
+			_persistedPotentialSolutions = solutions;
 			_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Select(l => new Letter { Display = l.ToString() }).ToArray();
 		}
 
@@ -80,30 +81,37 @@ namespace mCubed.WheelCapture.Model
 
 		public void LetterGuessed(string letter)
 		{
-			var puzzleLetter = Letters.FirstOrDefault(l => l.Display == letter);
-			if (puzzleLetter != null)
+			if (string.IsNullOrEmpty(CurrentPuzzle))
 			{
-				puzzleLetter.IsUsed = true;
-				OnCurrentPuzzleChanged();
-			}
-		}
-
-		private void OnCurrentPuzzleChanged()
-		{
-			var puzzle = CurrentPuzzle;
-			if (string.IsNullOrEmpty(puzzle))
-			{
-				PotentialSolutions = null;
+				_guessedLettersQueue.Enqueue(letter);
 			}
 			else
 			{
-				var potentialSolutions = PotentialSolutions;
-				if (potentialSolutions == null)
+				var puzzleLetter = Letters.FirstOrDefault(l => l.Display == letter);
+				if (puzzleLetter != null)
 				{
-					potentialSolutions = _allSolutions;
+					puzzleLetter.IsUsed = true;
+					OnCurrentPuzzleChanged(false);
 				}
+			}
+		}
+
+		private void OnCurrentPuzzleChanged(bool persistPotential = true)
+		{
+			var puzzle = CurrentPuzzle;
+			if (!string.IsNullOrEmpty(puzzle))
+			{
 				var regex = BuildFormatRegex(puzzle);
-				PotentialSolutions = potentialSolutions.Where(c => regex.IsMatch(c.Value)).ToArray();
+				var potentialSolutions = _persistedPotentialSolutions.Where(c => regex.IsMatch(c.Value)).ToArray();
+				if (persistPotential)
+				{
+					_persistedPotentialSolutions = potentialSolutions;
+				}
+				PotentialSolutions = potentialSolutions;
+				while (_guessedLettersQueue.Count > 0)
+				{
+					LetterGuessed(_guessedLettersQueue.Dequeue());
+				}
 			}
 		}
 
