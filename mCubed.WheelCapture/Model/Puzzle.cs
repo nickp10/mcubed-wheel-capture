@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -102,7 +103,26 @@ namespace mCubed.WheelCapture.Model
 			if (!string.IsNullOrEmpty(puzzle))
 			{
 				var regex = BuildFormatRegex(puzzle);
-				var potentialSolutions = _persistedPotentialSolutions.Where(c => regex.IsMatch(c.Value)).ToArray();
+				var potentialSolutions = _persistedPotentialSolutions
+					.Where(c => regex.IsMatch(c.Value))
+					.OrderBy(w =>
+					{
+						if (w.Category.Equals(Category, StringComparison.OrdinalIgnoreCase))
+						{
+							return 1;
+						}
+						else if (w.Category.Equals("Unknown", StringComparison.OrdinalIgnoreCase))
+						{
+							return 2;
+						}
+						else if (w.Category.Equals("Bonus", StringComparison.OrdinalIgnoreCase))
+						{
+							return 3;
+						}
+						return 4;
+					})
+					.ThenBy(w => w.Value)
+					.ToArray();
 				if (persistPotential)
 				{
 					_persistedPotentialSolutions = potentialSolutions;
