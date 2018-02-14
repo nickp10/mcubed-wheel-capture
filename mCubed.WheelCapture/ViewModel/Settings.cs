@@ -6,7 +6,13 @@ namespace mCubed.WheelCapture.ViewModel
 {
 	public static class Settings
 	{
+		#region Data Members
+
 		private static readonly IDictionary<string, string> _settings = new Dictionary<string, string>();
+
+		#endregion
+
+		#region Helpers
 
 		private static void ReadSettings()
 		{
@@ -25,6 +31,10 @@ namespace mCubed.WheelCapture.ViewModel
 				}
 			}
 		}
+
+		#endregion
+
+		#region Properties
 
 		public static string PersistenceAppName
 		{
@@ -70,5 +80,7 @@ namespace mCubed.WheelCapture.ViewModel
 				return _settings["WebSocketURLFilter"];
 			}
 		}
+
+		#endregion
 	}
 }
