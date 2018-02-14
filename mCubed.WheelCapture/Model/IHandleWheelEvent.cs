@@ -1,7 +1,7 @@
 ﻿
 namespace mCubed.WheelCapture.Model
 {
-	public interface IHandleWOFEvent
+	public interface IHandleWheelEvent
 	{
 		void PuzzleChanged(string puzzle);
 		void CategoryChanged(string category);

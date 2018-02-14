@@ -113,7 +113,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\IHandleWOFEvent.cs" />
+    <Compile Include="Model\IHandleWheelEvent.cs" />
     <Compile Include="Model\Letter.cs" />
     <Compile Include="Model\Puzzle.cs" />
     <Compile Include="Model\Word.cs" />
@@ -121,11 +121,15 @@
     <Compile Include="Services\WheelCategory.cs" />
     <Compile Include="Services\WheelWord.cs" />
     <Compile Include="ViewModel\PuzzleAnalyzer.cs" />
+    <Compile Include="ViewModel\Settings.cs" />
     <Compile Include="ViewModel\WebSocketMessageParser.cs" />
-    <Compile Include="ViewModel\WOFCaptureViewModel.cs" />
+    <Compile Include="ViewModel\WheelCaptureViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AppIcon.ico" />
+    <Content Include="mCubed.WheelCapture.exe.settings">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\ThirdParty\makecert.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

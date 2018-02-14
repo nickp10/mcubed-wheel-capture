@@ -9,7 +9,7 @@ using mCubed.WheelCapture.Services;
 
 namespace mCubed.WheelCapture.ViewModel
 {
-	public class WOFCaptureViewModel : IHandleWOFEvent, INotifyPropertyChanged
+	public class WheelCaptureViewModel : IHandleWheelEvent, INotifyPropertyChanged
 	{
 		#region Data Members
 
@@ -24,7 +24,7 @@ namespace mCubed.WheelCapture.ViewModel
 
 		#region Constructors
 
-		public WOFCaptureViewModel()
+		public WheelCaptureViewModel()
 		{
 			_service = new WheelCaptureService();
 			_categories = _service.CategoryList;
@@ -104,7 +104,7 @@ namespace mCubed.WheelCapture.ViewModel
 
 		#endregion
 
-		#region IHandleWOFEvent Members
+		#region IHandleWheelEvent Members
 
 		public void PuzzleChanged(string puzzle)
 		{

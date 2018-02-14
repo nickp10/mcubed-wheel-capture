@@ -13,13 +13,13 @@ namespace mCubed.WheelCapture.ViewModel
 	{
 		#region Data Members
 
-		private readonly IHandleWOFEvent _handler;
+		private readonly IHandleWheelEvent _handler;
 
 		#endregion
 
 		#region Constructors
 
-		public WebSocketMessageParser(IHandleWOFEvent handler)
+		public WebSocketMessageParser(IHandleWheelEvent handler)
 		{
 			_handler = handler;
 			Capturer.WebSocketCaptured += OnWebSocketCaptured;
@@ -32,7 +32,7 @@ namespace mCubed.WheelCapture.ViewModel
 		private void OnWebSocketCaptured(Session session, WebSocketMessage message)
 		{
 			var url = session.fullUrl;
-			if (url != null && url.Contains("worldwinner.com"))
+			if (url != null && url.Contains(Settings.WebSocketURLFilter))
 			{
 				var payload = message.PayloadAsString();
 				if (payload != null)

@@ -7,7 +7,7 @@ namespace mCubed.WheelCapture
 	{
 		public MainWindow()
 		{
-			DataContext = new WOFCaptureViewModel();
+			DataContext = new WheelCaptureViewModel();
 			InitializeComponent();
 		}
 	}
