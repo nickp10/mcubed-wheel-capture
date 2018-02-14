@@ -48,7 +48,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CD0C7EFBEBBA5452247630402B71560FD9AAFC16</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>C0C7907F1F57C42DCAC14D6C0CB1103D1E142AA8</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>mCubed.WheelCapture.pfx</ManifestKeyFile>
@@ -125,6 +125,12 @@
     <Compile Include="ViewModel\WOFCaptureViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="AppIcon.ico" />
+    <Content Include="..\ThirdParty\makecert.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
     <None Include="mCubed.WheelCapture.pfx" />
     <None Include="packages.config" />
@@ -150,12 +156,6 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\ThirdParty\makecert.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="AppIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforePublish">
