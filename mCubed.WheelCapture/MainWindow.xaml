@@ -1,0 +1,231 @@
+﻿<Window x:Class="mCubed.WheelCapture.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Title="mCubed: Wheel Of Fortune Capture"
+		Height="500"
+		Width="700">
+	<TabControl>
+		<TabItem Header="Current Puzzle">
+			<ScrollViewer HorizontalScrollBarVisibility="Auto"
+						  VerticalScrollBarVisibility="Auto">
+				<Grid Grid.IsSharedSizeScope="True"
+					  Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid Grid.Row="0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="40"/>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="40" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						<Border Grid.RowSpan="3"
+								Grid.Column="0"
+								Background="#DDDDDD"
+								Padding="5">
+							<TextBlock FontSize="24"
+									   Foreground="Green"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Text="{Binding CurrentWedge}" />
+						</Border>
+						<Border Grid.RowSpan="3"
+								Grid.Column="2"
+								Background="#DDDDDD"
+								Padding="5">
+							<TextBlock FontSize="24"
+									   Foreground="Green"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Text="{Binding CurrentWedge}" />
+						</Border>
+						<Border Grid.Row="0"
+								Grid.Column="1"
+								Background="#DDDDDD"
+								Padding="5">
+							<ItemsControl ItemsSource="{Binding CurrentPuzzle.Letters}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel IsItemsHost="True"
+												   HorizontalAlignment="Center"
+												   VerticalAlignment="Center" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<TextBlock FontSize="16"
+												   Text="{Binding Display}"
+												   VerticalAlignment="Center"
+												   x:Name="DisplayTextBlock">
+											<TextBlock.Foreground>
+												<SolidColorBrush Color="Black"
+																 x:Name="DisplayColorBrush" />
+											</TextBlock.Foreground>
+										</TextBlock>
+										<DataTemplate.Triggers>
+											<DataTrigger Binding="{Binding IsUsed}"
+														 Value="True">
+												<DataTrigger.EnterActions>
+													<BeginStoryboard>
+														<Storyboard>
+															<DoubleAnimation From="16"
+																			 To="32"
+																			 Duration="0:0:0.250"
+																			 Storyboard.TargetName="DisplayTextBlock"
+																			 Storyboard.TargetProperty="FontSize" />
+															<ColorAnimation From="Black"
+																			To="Green"
+																			Duration="0:0:0.250"
+																			Storyboard.TargetName="DisplayColorBrush"
+																			Storyboard.TargetProperty="Color" />
+															<DoubleAnimation From="32"
+																			 To="12"
+																			 BeginTime="0:0:2"
+																			 Duration="0:0:0.500"
+																			 Storyboard.TargetName="DisplayTextBlock"
+																			 Storyboard.TargetProperty="FontSize" />
+															<DoubleAnimation From="1"
+																			 To="0.75"
+																			 BeginTime="0:0:2"
+																			 Duration="0:0:0.500"
+																			 Storyboard.TargetName="DisplayTextBlock"
+																			 Storyboard.TargetProperty="Opacity" />
+														</Storyboard>
+													</BeginStoryboard>
+												</DataTrigger.EnterActions>
+											</DataTrigger>
+										</DataTemplate.Triggers>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</Border>
+						<Border Grid.Row="2"
+								Grid.Column="1"
+								Background="#DDDDDD"
+								Padding="5">
+							<TextBlock FontSize="16"
+									   HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Text="{Binding CurrentPuzzle.Category}" />
+						</Border>
+						<TextBlock Grid.Row="1"
+								   Grid.Column="1"
+								   FontSize="24"
+								   FontStretch="Expanded"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Text="{Binding CurrentPuzzle.CurrentPuzzle}"
+								   TextWrapping="Wrap" />
+					</Grid>
+					<Grid Grid.Row="2"
+						  Background="#222222"
+						  TextElement.FontSize="18"
+						  TextElement.FontWeight="Bold"
+						  TextElement.Foreground="White">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="25" />
+							<ColumnDefinition Width="Auto"
+											  SharedSizeGroup="CategoryColumn" />
+							<ColumnDefinition Width="25" />
+							<ColumnDefinition Width="Auto"
+											  SharedSizeGroup="SolveLettersColumn" />
+							<ColumnDefinition Width="10" />
+						</Grid.ColumnDefinitions>
+						<TextBlock Grid.Column="1"
+								   Text="Puzzle" />
+						<TextBlock Grid.Column="3"
+								   Text="Category" />
+						<TextBlock Grid.Column="5"
+								   Text="Solve Letters" />
+					</Grid>
+					<ItemsControl Grid.Row="3"
+								  AlternationCount="2"
+								  ItemsSource="{Binding CurrentPuzzle.PotentialSolutions}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Border BorderBrush="Black"
+										BorderThickness="1,0,1,1"
+										Padding="10"
+										TextElement.FontSize="18"
+										x:Name="SolutionBorder">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition />
+											<ColumnDefinition Width="25" />
+											<ColumnDefinition Width="Auto"
+															  SharedSizeGroup="CategoryColumn" />
+											<ColumnDefinition Width="25" />
+											<ColumnDefinition Width="Auto"
+															  SharedSizeGroup="SolveLettersColumn" />
+										</Grid.ColumnDefinitions>
+										<TextBlock Grid.Column="0"
+												   Text="{Binding Value}" />
+										<TextBlock Grid.Column="2"
+												   Text="{Binding Category}" />
+										<TextBlock Grid.Column="4"
+												   FontWeight="Bold"
+												   Text="{Binding SolveLetters}" />
+									</Grid>
+								</Border>
+								<DataTemplate.Triggers>
+									<Trigger Property="ItemsControl.AlternationIndex"
+											 Value="1">
+										<Setter Property="Background"
+												TargetName="SolutionBorder"
+												Value="#CCC" />
+									</Trigger>
+								</DataTemplate.Triggers>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</Grid>
+			</ScrollViewer>
+		</TabItem>
+		<TabItem Header="Analyzer">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<GroupBox Grid.Column="0"
+						  Margin="10"
+						  Padding="10"
+						  Header="Character Counts">
+					<ScrollViewer HorizontalScrollBarVisibility="Auto"
+								  VerticalScrollBarVisibility="Auto">
+						<ItemsControl ItemsSource="{Binding Analyzer.CharacterCounts}"
+									  Grid.IsSharedSizeScope="True">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto"
+															  SharedSizeGroup="LetterColumn" />
+											<ColumnDefinition Width="10" />
+											<ColumnDefinition />
+										</Grid.ColumnDefinitions>
+										<TextBlock Grid.Column="0"
+												   Text="{Binding Key}"
+												   FontWeight="Bold" />
+										<TextBlock Grid.Column="2">
+									<Run>(</Run><TextBlock Text="{Binding Value}" /><Run>)</Run>
+								</TextBlock>
+									</Grid>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</ScrollViewer>
+				</GroupBox>
+			</Grid>
+		</TabItem>
+	</TabControl>
+</Window>
