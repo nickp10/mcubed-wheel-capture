@@ -4,6 +4,9 @@ namespace mCubed.WheelCapture.Services
 {
 	public class WheelWord
 	{
+		[JsonProperty("approved")]
+		public bool Approved { get; set; }
+
 		[JsonProperty("id")]
 		public string ID { get; set; }
 
