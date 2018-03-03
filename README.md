@@ -41,3 +41,13 @@ Creating Releases
 1. Build the solution.
 1. Zip the bin/Release directory.
 1. Upload the zip file to GitHub.
+
+[mcubed-persistence](https://github.com/nickp10/mcubed-persistence)
+----
+This application relies on the mcubed-persistence being started. There is a .exe.settings file next to the wheel capture .exe that indicates how to connect to the persistence server. Refer to the mcubed-persistence documentation how to obtain the application name and key.
+
+* *PersistenceServer* - **Required.** Indicates the server name or IP address of which to connect to the persistence server.
+* *PersistencePort* - **Required.** Indicates the port of which to connect to the persistence server.
+* *PersistenceAppName* - **Required.** Indicates the application name to connect to the persistence server with.
+* *PersistenceAppKey* - **Required.** Indicates the application key to connect to the persistence server with.
+* *WebSocketURLFilter* - **Required.** Indicates the URL to filter to capture the wheel events.
