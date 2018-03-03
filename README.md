@@ -51,3 +51,8 @@ This application relies on the mcubed-persistence being started. There is a .exe
 * *PersistenceAppName* - **Required.** Indicates the application name to connect to the persistence server with.
 * *PersistenceAppKey* - **Required.** Indicates the application key to connect to the persistence server with.
 * *WebSocketURLFilter* - **Required.** Indicates the URL to filter to capture the wheel events.
+
+The table names used by this application are:
+
+* *wheelcategories* - Stores the categories for the wheel words.
+* *wheelwords* - Stores the wheel words that have been captured.
