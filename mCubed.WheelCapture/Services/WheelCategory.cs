@@ -1,13 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace mCubed.WheelCapture.Services
 {
 	public class WheelCategory
 	{
-		[JsonProperty("id")]
-		public string ID { get; set; }
+		[BsonId]
+		public ObjectId ID { get; set; }
 
-		[JsonProperty("name")]
+		[BsonElement("name")]
 		public string Name { get; set; }
 	}
 }

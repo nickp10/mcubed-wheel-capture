@@ -42,17 +42,15 @@ Creating Releases
 1. Zip the bin/Release directory.
 1. Upload the zip file to GitHub.
 
-[mcubed-persistence](https://github.com/nickp10/mcubed-persistence)
+[MongoDB](https://www.mongodb.com/)
 ----
-This application relies on the mcubed-persistence being started. There is a .exe.settings file next to the wheel capture .exe that indicates how to connect to the persistence server. Refer to the mcubed-persistence documentation how to obtain the application name and key.
+This application relies on a connection to a MongoDB instance. There is a .exe.settings file next to the wheel capture .exe that indicates how to connect to the MongoDB instance. Refer to the MongoDB documentation how to obtain a connection URL.
 
-* *PersistenceServer* - **Required.** Indicates the server name or IP address of which to connect to the persistence server.
-* *PersistencePort* - **Required.** Indicates the port of which to connect to the persistence server.
-* *PersistenceAppName* - **Required.** Indicates the application name to connect to the persistence server with.
-* *PersistenceAppKey* - **Required.** Indicates the application key to connect to the persistence server with.
+* *MongoConnectionUrl* - **Required.** Indicates the connection URL to the MongoDB instance.
+* *MongoDBName* - **Required.** Indicates the name of the database to connect to within the MongoDB instance.
 * *WebSocketURLFilter* - **Required.** Indicates the URL to filter to capture the wheel events.
 
-The table names used by this application are:
+The collection names used by this application are:
 
 * *wheelcategories* - Stores the categories for the wheel words.
 * *wheelwords* - Stores the wheel words that have been captured.

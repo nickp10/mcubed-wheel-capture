@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using mCubed.WheelCapture.ViewModel;
-using Newtonsoft.Json;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace mCubed.WheelCapture.Services
 {
@@ -11,6 +11,12 @@ namespace mCubed.WheelCapture.Services
 
 		private const string CATEGORY_TABLE = "wheelcategories";
 		private const string WORD_TABLE = "wheelwords";
+
+		#endregion
+
+		#region Data Members
+
+		private IMongoDatabase _database;
 
 		#endregion
 
@@ -35,7 +41,7 @@ namespace mCubed.WheelCapture.Services
 			return Post(CATEGORY_TABLE, category);
 		}
 
-		public WheelWord AddWord(string word, string categoryID)
+		public WheelWord AddWord(string word, ObjectId categoryID)
 		{
 			var wheelWord = new WheelWord
 			{
@@ -49,30 +55,27 @@ namespace mCubed.WheelCapture.Services
 
 		#region Helpers
 
+		private IMongoDatabase GetDatabase()
+		{
+			if (_database == null)
+			{
+				var client = new MongoClient(Settings.MongoConnectionUrl);
+				_database = client.GetDatabase(Settings.MongoDBName);
+			}
+			return _database;
+		}
+
 		private List<T> Get<T>(string tableName)
 		{
-			var url = string.Format("http://{0}:{1}/{2}", Settings.PersistenceServer, Settings.PersistencePort, tableName);
-			using (var client = new WebClient())
-			{
-				client.Headers.Add("mcubed-app-name", Settings.PersistenceAppName);
-				client.Headers.Add("mcubed-app-key", Settings.PersistenceAppKey);
-				var responseBody = client.DownloadString(url);
-				return JsonConvert.DeserializeObject<List<T>>(responseBody);
-			}
+			var db = GetDatabase();
+			return db.GetCollection<T>(tableName).AsQueryable().ToList();
 		}
 
 		private T Post<T>(string tableName, T obj)
 		{
-			var url = string.Format("http://{0}:{1}/{2}", Settings.PersistenceServer, Settings.PersistencePort, tableName);
-			using (var client = new WebClient())
-			{
-				client.Headers.Add("mcubed-app-name", Settings.PersistenceAppName);
-				client.Headers.Add("mcubed-app-key", Settings.PersistenceAppKey);
-				client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-				var requestBody = JsonConvert.SerializeObject(obj);
-				var responseBody = client.UploadString(url, requestBody);
-				return JsonConvert.DeserializeObject<T>(responseBody);
-			}
+			var db = GetDatabase();
+			db.GetCollection<T>(tableName).InsertOne(obj);
+			return obj;
 		}
 
 		#endregion

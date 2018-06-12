@@ -1,5 +1,3 @@
-﻿PersistenceAppName=
-PersistenceAppKey=
-PersistenceServer=
-PersistencePort=
+﻿MongoConnectionUrl=
+MongoDBName=
 WebSocketURLFilter=

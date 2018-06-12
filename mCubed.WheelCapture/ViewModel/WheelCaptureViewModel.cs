@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using mCubed.WheelCapture.Model;
 using mCubed.WheelCapture.Services;
+using MongoDB.Bson;
 
 namespace mCubed.WheelCapture.ViewModel
 {
@@ -80,9 +81,9 @@ namespace mCubed.WheelCapture.ViewModel
 
 		#region Methods
 
-		private string GetCategoryName(string categoryID)
+		private string GetCategoryName(ObjectId categoryID)
 		{
-			var category = _categories.FirstOrDefault(c => c.ID == categoryID);
+			var category = _categories.FirstOrDefault(c => c.ID.Equals(categoryID));
 			if (category != null)
 			{
 				return category.Name;

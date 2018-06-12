@@ -36,39 +36,21 @@ namespace mCubed.WheelCapture.ViewModel
 
 		#region Properties
 
-		public static string PersistenceAppName
+		public static string MongoConnectionUrl
 		{
 			get
 			{
 				ReadSettings();
-				return _settings["PersistenceAppName"];
+				return _settings["MongoConnectionUrl"];
 			}
 		}
 
-		public static string PersistenceAppKey
+		public static string MongoDBName
 		{
 			get
 			{
 				ReadSettings();
-				return _settings["PersistenceAppKey"];
-			}
-		}
-
-		public static string PersistenceServer
-		{
-			get
-			{
-				ReadSettings();
-				return _settings["PersistenceServer"];
-			}
-		}
-
-		public static string PersistencePort
-		{
-			get
-			{
-				ReadSettings();
-				return _settings["PersistencePort"];
+				return _settings["MongoDBName"];
 			}
 		}
 
